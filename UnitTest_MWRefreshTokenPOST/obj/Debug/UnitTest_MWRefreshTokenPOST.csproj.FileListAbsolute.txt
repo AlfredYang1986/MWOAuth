@@ -1,0 +1,10 @@
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\bin\Debug\UnitTest_MWRefreshTokenPOST.exe.config
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\obj\Debug\UnitTest_MWRefreshTokenPOST.csprojResolveAssemblyReference.cache
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\bin\Debug\UnitTest_MWRefreshTokenPOST.exe
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\bin\Debug\UnitTest_MWRefreshTokenPOST.pdb
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\bin\Debug\MWAuthorizationServer.dll
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\bin\Debug\EntityFramework.dll
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\bin\Debug\MWAuthorizationServer.pdb
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\bin\Debug\EntityFramework.xml
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\obj\Debug\UnitTest_MWRefreshTokenPOST.exe
+\\ntapprdfs01n02.rmit.internal\sh4\S3391854\Configuration\Desktop\authorizationserver\trunk\UnitTest_MWRefreshTokenPOST\obj\Debug\UnitTest_MWRefreshTokenPOST.pdb

@@ -1,0 +1,12 @@
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\MWAuthorizationServer.dll.config
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\MWAuthorizationServer.dll
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\MWAuthorizationServer.pdb
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\EntityFramework.dll
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\EntityFramework.xml
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\obj\Debug\MWAuthorizationServer.csprojResolveAssemblyReference.cache
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\obj\Debug\MWAuthorizationServer.dll
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\obj\Debug\MWAuthorizationServer.pdb
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\MWRemoteAPICall.dll
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\MWRemoteAPICall.pdb
+C:\Users\yy\Desktop\authorizationserver\trunk\MWAuthorizationServer\bin\Debug\Newtonsoft.Json.xml

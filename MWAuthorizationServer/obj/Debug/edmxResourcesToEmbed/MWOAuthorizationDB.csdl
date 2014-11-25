@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MWOAuthDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MWOAuthDBEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="AccessTokens" EntityType="MWOAuthDBModel.AccessToken" />
+    <EntitySet Name="ChangePasswordTokenSets" EntityType="MWOAuthDBModel.ChangePasswordTokenSet" />
+    <EntitySet Name="Clients" EntityType="MWOAuthDBModel.Client" />
+    <EntitySet Name="ThirdPartyTokens" EntityType="MWOAuthDBModel.ThirdPartyToken" />
+    <EntitySet Name="Users" EntityType="MWOAuthDBModel.User" />
+    <AssociationSet Name="FK_AccessToken_Client" Association="MWOAuthDBModel.FK_AccessToken_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="AccessToken" EntitySet="AccessTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccessTokenThirdPartyToken" Association="MWOAuthDBModel.FK_AccessTokenThirdPartyToken">
+      <End Role="AccessToken" EntitySet="AccessTokens" />
+      <End Role="ThirdPartyToken" EntitySet="ThirdPartyTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccessToken" Association="MWOAuthDBModel.FK_UserAccessToken">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AccessToken" EntitySet="AccessTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserChangePasswordToken" Association="MWOAuthDBModel.FK_UserChangePasswordToken">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ChangePasswordTokenSet" EntitySet="ChangePasswordTokenSets" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccessToken">
+    <Key>
+      <PropertyRef Name="access_token_id" />
+    </Key>
+    <Property Name="access_token" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="expire_to" Type="Int32" Nullable="false" />
+    <Property Name="client_id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="refresh_token" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="access_token_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Client" Relationship="MWOAuthDBModel.FK_AccessToken_Client" FromRole="AccessToken" ToRole="Client" />
+    <NavigationProperty Name="ThirdPartyTokens" Relationship="MWOAuthDBModel.FK_AccessTokenThirdPartyToken" FromRole="AccessToken" ToRole="ThirdPartyToken" />
+    <NavigationProperty Name="User" Relationship="MWOAuthDBModel.FK_UserAccessToken" FromRole="AccessToken" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ChangePasswordTokenSet">
+    <Key>
+      <PropertyRef Name="ChpToken_Id" />
+    </Key>
+    <Property Name="ChpToken_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="expired" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ChpToken" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="MWOAuthDBModel.FK_UserChangePasswordToken" FromRole="ChangePasswordTokenSet" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="client_seret" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="scope" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AccessTokens" Relationship="MWOAuthDBModel.FK_AccessToken_Client" FromRole="Client" ToRole="AccessToken" />
+  </EntityType>
+  <EntityType Name="ThirdPartyToken">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="third_party_token" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="third_party_user_id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="token_provider" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="access_token_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AccessToken" Relationship="MWOAuthDBModel.FK_AccessTokenThirdPartyToken" FromRole="ThirdPartyToken" ToRole="AccessToken" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AccessTokens" Relationship="MWOAuthDBModel.FK_UserAccessToken" FromRole="User" ToRole="AccessToken" />
+    <NavigationProperty Name="ChangePasswordTokenSets" Relationship="MWOAuthDBModel.FK_UserChangePasswordToken" FromRole="User" ToRole="ChangePasswordTokenSet" />
+  </EntityType>
+  <Association Name="FK_AccessToken_Client">
+    <End Role="Client" Type="MWOAuthDBModel.Client" Multiplicity="1" />
+    <End Role="AccessToken" Type="MWOAuthDBModel.AccessToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="client_id" />
+      </Principal>
+      <Dependent Role="AccessToken">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccessTokenThirdPartyToken">
+    <End Role="AccessToken" Type="MWOAuthDBModel.AccessToken" Multiplicity="1" />
+    <End Role="ThirdPartyToken" Type="MWOAuthDBModel.ThirdPartyToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessToken">
+        <PropertyRef Name="access_token_id" />
+      </Principal>
+      <Dependent Role="ThirdPartyToken">
+        <PropertyRef Name="access_token_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccessToken">
+    <End Role="User" Type="MWOAuthDBModel.User" Multiplicity="1" />
+    <End Role="AccessToken" Type="MWOAuthDBModel.AccessToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="AccessToken">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserChangePasswordToken">
+    <End Role="User" Type="MWOAuthDBModel.User" Multiplicity="1" />
+    <End Role="ChangePasswordTokenSet" Type="MWOAuthDBModel.ChangePasswordTokenSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="ChangePasswordTokenSet">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

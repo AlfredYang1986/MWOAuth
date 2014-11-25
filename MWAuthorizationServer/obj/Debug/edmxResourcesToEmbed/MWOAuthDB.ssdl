@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MWOAuthDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccessToken">
+    <Key>
+      <PropertyRef Name="access_token" />
+    </Key>
+    <Property Name="access_token" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="expire_to" Type="int" Nullable="false" />
+    <Property Name="client_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="refresh_token" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="client_seret" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="scope" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ThirdPartyToken">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="third_party_token" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="third_party_user_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="token_provider" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="access_token" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AccessToken_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="AccessToken" Type="Self.AccessToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="client_id" />
+      </Principal>
+      <Dependent Role="AccessToken">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccessToken_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AccessToken" Type="Self.AccessToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="AccessToken">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThirdPartyToken_AccessToken">
+    <End Role="AccessToken" Type="Self.AccessToken" Multiplicity="1" />
+    <End Role="ThirdPartyToken" Type="Self.ThirdPartyToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessToken">
+        <PropertyRef Name="access_token" />
+      </Principal>
+      <Dependent Role="ThirdPartyToken">
+        <PropertyRef Name="access_token" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MWOAuthDBModelStoreContainer">
+    <EntitySet Name="AccessToken" EntityType="Self.AccessToken" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThirdPartyToken" EntityType="Self.ThirdPartyToken" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AccessToken_Client" Association="Self.FK_AccessToken_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="AccessToken" EntitySet="AccessToken" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccessToken_User" Association="Self.FK_AccessToken_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="AccessToken" EntitySet="AccessToken" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThirdPartyToken_AccessToken" Association="Self.FK_ThirdPartyToken_AccessToken">
+      <End Role="AccessToken" EntitySet="AccessToken" />
+      <End Role="ThirdPartyToken" EntitySet="ThirdPartyToken" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

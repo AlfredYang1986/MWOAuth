@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MWOAuthDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccessToken">
+    <Key>
+      <PropertyRef Name="access_token" />
+    </Key>
+    <Property Name="access_token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="expire_to" Type="Int32" Nullable="false" />
+    <Property Name="client_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="refresh_token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_AccessToken_Client" FromRole="AccessToken" ToRole="Client" />
+    <NavigationProperty Name="User" Relationship="Self.FK_AccessToken_User" FromRole="AccessToken" ToRole="User" />
+    <NavigationProperty Name="ThirdPartyTokens" Relationship="Self.FK_ThirdPartyToken_AccessToken" FromRole="AccessToken" ToRole="ThirdPartyToken" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="client_seret" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="scope" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AccessTokens" Relationship="Self.FK_AccessToken_Client" FromRole="Client" ToRole="AccessToken" />
+  </EntityType>
+  <EntityType Name="ThirdPartyToken">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="third_party_token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="token_provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="access_token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AccessToken" Relationship="Self.FK_ThirdPartyToken_AccessToken" FromRole="ThirdPartyToken" ToRole="AccessToken" />
+    <Property Name="third_party_user_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AccessTokens" Relationship="Self.FK_AccessToken_User" FromRole="User" ToRole="AccessToken" />
+  </EntityType>
+  <Association Name="FK_AccessToken_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="AccessToken" Type="Self.AccessToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="client_id" />
+      </Principal>
+      <Dependent Role="AccessToken">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccessToken_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AccessToken" Type="Self.AccessToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="AccessToken">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThirdPartyToken_AccessToken">
+    <End Role="AccessToken" Type="Self.AccessToken" Multiplicity="1" />
+    <End Role="ThirdPartyToken" Type="Self.ThirdPartyToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessToken">
+        <PropertyRef Name="access_token" />
+      </Principal>
+      <Dependent Role="ThirdPartyToken">
+        <PropertyRef Name="access_token" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MWOAuthDBContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccessTokens" EntityType="Self.AccessToken" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="ThirdPartyTokens" EntityType="Self.ThirdPartyToken" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_AccessToken_Client" Association="Self.FK_AccessToken_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="AccessToken" EntitySet="AccessTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccessToken_User" Association="Self.FK_AccessToken_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AccessToken" EntitySet="AccessTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThirdPartyToken_AccessToken" Association="Self.FK_ThirdPartyToken_AccessToken">
+      <End Role="AccessToken" EntitySet="AccessTokens" />
+      <End Role="ThirdPartyToken" EntitySet="ThirdPartyTokens" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

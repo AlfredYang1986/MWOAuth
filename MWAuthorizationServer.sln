@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MWAuthorizationServer", "MWAuthorizationServer\MWAuthorizationServer.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MWOAuthWeb", "http://localhost:1296", "{B9F38F9A-D083-461F-BCF7-15E110A6ED66}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{15b3e0d2-6217-493a-a690-158c497f5318}|MWAuthorizationServer.dll;{D8B80D1F-52B0-4F57-93BC-9B06E24B3EF9}|MWRemoteAPICall.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_1296"
+		Debug.AspNetCompiler.PhysicalPath = "MWOAuthWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1296\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_1296"
+		Release.AspNetCompiler.PhysicalPath = "MWOAuthWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1296\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "MWOAuthWeb\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest_MWRefreshTokenPOST", "UnitTest_MWRefreshTokenPOST\UnitTest_MWRefreshTokenPOST.csproj", "{C155B28F-FD11-4AB3-B2DD-B6D55E385805}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MWRemoteAPICall", "MWRemoteAPICall\MWRemoteAPICall.csproj", "{D8B80D1F-52B0-4F57-93BC-9B06E24B3EF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F38F9A-D083-461F-BCF7-15E110A6ED66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F38F9A-D083-461F-BCF7-15E110A6ED66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F38F9A-D083-461F-BCF7-15E110A6ED66}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F38F9A-D083-461F-BCF7-15E110A6ED66}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{C155B28F-FD11-4AB3-B2DD-B6D55E385805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C155B28F-FD11-4AB3-B2DD-B6D55E385805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C155B28F-FD11-4AB3-B2DD-B6D55E385805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C155B28F-FD11-4AB3-B2DD-B6D55E385805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B80D1F-52B0-4F57-93BC-9B06E24B3EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B80D1F-52B0-4F57-93BC-9B06E24B3EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B80D1F-52B0-4F57-93BC-9B06E24B3EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B80D1F-52B0-4F57-93BC-9B06E24B3EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="30b75ffe20bf4ebe9bb84c4c6579f82a" Name="Diagram1">
+        <EntityTypeShape EntityType="MWOAuthDBModel.AccessToken" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MWOAuthDBModel.Client" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MWOAuthDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MWOAuthDBModel.ThirdPartyToken" Width="3.125" PointX="5.625" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MWOAuthDBModel.User" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="MWOAuthDBModel.FK_AccessToken_Client" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MWOAuthDBModel.ChangePasswordToken" Width="1.5" PointX="8.375" PointY="2.75" />
+        <AssociationConnector Association="MWOAuthDBModel.UserChangePasswordToken" />
+        <AssociationConnector Association="MWOAuthDBModel.AccessTokenThirdPartyToken" />
+        <AssociationConnector Association="MWOAuthDBModel.UserAccessToken" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

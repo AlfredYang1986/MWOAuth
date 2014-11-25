@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MWOAuthDBModelStoreContainer" CdmEntityContainer="MWOAuthDBContainer">
+    <EntitySetMapping Name="AccessTokens">
+      <EntityTypeMapping TypeName="MWOAuthDBModel.AccessToken">
+        <MappingFragment StoreEntitySet="AccessToken">
+          <ScalarProperty Name="access_token" ColumnName="access_token" />
+          <ScalarProperty Name="expire_to" ColumnName="expire_to" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="refresh_token" ColumnName="refresh_token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="MWOAuthDBModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="client_seret" ColumnName="client_seret" />
+          <ScalarProperty Name="scope" ColumnName="scope" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThirdPartyTokens">
+      <EntityTypeMapping TypeName="MWOAuthDBModel.ThirdPartyToken">
+        <MappingFragment StoreEntitySet="ThirdPartyToken">
+          <ScalarProperty Name="third_party_user_id" ColumnName="third_party_user_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="third_party_token" ColumnName="third_party_token" />
+          <ScalarProperty Name="token_provider" ColumnName="token_provider" />
+          <ScalarProperty Name="access_token" ColumnName="access_token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MWOAuthDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
